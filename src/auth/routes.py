@@ -223,3 +223,30 @@ async def get_current_user(
 ) -> User:
     return user
     
+
+@auth_router.delete('/close-account')
+async def delete_user(
+    user: User = Depends(get_current_user),
+    _: bool = Depends(RoleChecker(['user', 'admin'])),
+    token_details: dict = Depends(AccessTokenBearer()),
+    session: AsyncSession = Depends(get_db_session),
+) -> JSONResponse:
+    """Delete the current user's account and revoke the current access token.
+
+    The access token's JTI is added to the Redis blocklist so the token cannot
+    be reused. The user record is then removed from the database.
+    """
+    # Revoke the current access token
+    jti = token_details.get("jti")
+    exp = token_details.get("exp")
+
+    if jti:
+        await add_jti_to_blocklist(jti, exp)
+
+    # Delete the user from the database
+    await user_service.delete_user(user, session)
+
+    return JSONResponse(
+        content={"message": "Account closed and access token revoked."},
+        status_code=status.HTTP_200_OK,
+    )

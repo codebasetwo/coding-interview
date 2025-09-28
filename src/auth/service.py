@@ -1,13 +1,12 @@
-
 from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
 
-from src.databases.models import User
 from .schemas import SignupRequest
 from .utils import hash_password
+from src.databases.models import User
+
 
 class UserService:
-
     async def get_user_by_email(self, email: str, session: AsyncSession,) -> User:
         statement = select(User).where(User.email == email)
         result = await session.exec(statement)
@@ -46,3 +45,13 @@ class UserService:
         await session.commit()
 
         return user
+
+    async def delete_user(self, user: User, session: AsyncSession) -> None:
+        """Delete the given user from the database.
+
+        This permanently removes the user record. Callers should ensure any
+        related cleanup (revoking tokens, removing related resources) is handled
+        by the caller or other services.
+        """
+        await session.delete(user)
+        await session.commit()

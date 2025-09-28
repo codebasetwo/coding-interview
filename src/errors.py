@@ -119,7 +119,7 @@ def register_errors(app: FastAPI) -> None:
         InsufficientPermission,
         create_exception_handler(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            initial_detail={
+            details={
                 "message": "You do not have enough permissions to perform this action",
                 "error_code": "insufficient_permissions",
             },
@@ -130,7 +130,7 @@ def register_errors(app: FastAPI) -> None:
         AccountNotVerified,
         create_exception_handler(
             status_code=status.HTTP_403_FORBIDDEN,
-            initial_detail={
+            details={
                 "message": "Account Not verified",
                 "error_code": "account_not_verified",
                 "resolution":"Please check your email for verification details"
