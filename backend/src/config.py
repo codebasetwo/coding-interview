@@ -16,6 +16,7 @@ class Settings(BaseSettings):
     MAIL_PORT: int
     MAIL_FROM: str
     MAIL_FROM_NAME: str
+    OPENAI_API_KEY: str
 
     model_config = SettingsConfigDict(env_file=".env")
 

@@ -69,15 +69,14 @@ class RefreshTokenBearer(TokenBearer):
 
 
 async def get_current_user(
-        token_deta: TokenBearer = Depends(AccessTokenBearer()),
+        token_data: TokenBearer = Depends(AccessTokenBearer()),
         session: AsyncSession = Depends(get_db_session)
 ) -> User:
     
-    user = await UserService().get_user_by_email(token_deta['user'], session=session)
+    user = await UserService().get_user_by_email(token_data['user'], session=session)
 
     return user
     
-
 
 class RoleChecker:
     def __init__(self, allowed_roles: list[str]) -> None:
