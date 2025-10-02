@@ -2,12 +2,11 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.requests import Request
 from sqlmodel.ext.asyncio.session import AsyncSession
 
-
-from ..ai_generator import generate_challenge_with_ai
 from .schemas import ChallengeRequest
 from .service import ChallengeService
+from .utils import generate_challenge_with_ai
 from ..utils import authenticate_and_get_user_details
-from src.databases.main import get_db_session
+from backend.src.databases.main import get_db_session
 import json
 from datetime import datetime
 

@@ -8,16 +8,16 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 
 from .utils import decode_tokens
 from .service import UserService
-from src.databases.main import get_db_session
-from src.databases.models import User
-from src.errors import (
+from backend.src.databases.main import get_db_session
+from backend.src.databases.models import User
+from backend.src.errors import (
     InvalidToken, 
     RefreshTokenRequired, 
     AccessTokenRequired, 
     RevokedToken,
     InsufficientPermission,
     AccountNotVerified)
-from src.databases.redis import token_in_blocklist
+from backend.src.databases.redis import token_in_blocklist
 
 
 class TokenBearer(HTTPBearer):

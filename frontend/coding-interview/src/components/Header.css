@@ -1,0 +1,36 @@
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 1rem;
+    margin: 0 auto;
+    
+}
+
+.root h1 {
+    font-size: 1.5rem;
+    color: #1f2937;
+}
+
+.profile-image {
+    width: 30px;
+    border-radius: 50%;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.nav-links a:hover{
+    text-decoration: underline;
+    color: grey;
+    font-weight: bold;
+
+}

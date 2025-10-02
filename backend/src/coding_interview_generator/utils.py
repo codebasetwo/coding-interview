@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 from .prompts import system_prompt
 from .schemas import QuestionAnswerModel
-from src.config import Config
+from backend.src.config import Config
 
 load_dotenv()
 api_key = Config.OPENAI_API_KEY

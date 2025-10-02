@@ -4,7 +4,7 @@ from typing import Optional
 
 import redis.asyncio as aioredis
 
-from src.config import Config
+from backend.src.config import Config
 
 # Default TTL (seconds) to use if no token expiry is provided
 JTI_EXPIRY = 3600

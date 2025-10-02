@@ -3,7 +3,7 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 
 from .schemas import SignupRequest
 from .utils import hash_password
-from src.databases.models import User
+from backend.src.databases.models import User
 
 
 class UserService:

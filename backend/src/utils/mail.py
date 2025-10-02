@@ -1,5 +1,5 @@
 from fastapi_mail import ConnectionConfig, FastMail, MessageSchema, MessageType
-from src.config import Config
+from backend.src.config import Config
 
 EMAIL_CONF = ConnectionConfig(
     MAIL_DEBUG=True,

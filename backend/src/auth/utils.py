@@ -6,7 +6,7 @@ import jwt
 from passlib.context import CryptContext
 from itsdangerous import URLSafeTimedSerializer
 
-from src.config import Config
+from backend.src.config import Config
 
 MAX_BCRYPT_BYTES = 72
 password_context = CryptContext(

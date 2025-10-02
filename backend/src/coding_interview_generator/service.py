@@ -2,7 +2,7 @@
 from sqlmodel import select
 from sqlmodel.ext.asyncio.session import AsyncSession
 from datetime import datetime, timedelta
-from src.databases.models import ChallengeQuota, Challenge
+from backend.src.databases.models import ChallengeQuota, Challenge
 
 
 class ChallengeService:

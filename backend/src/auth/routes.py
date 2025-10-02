@@ -20,13 +20,13 @@ from .utils import (create_url_safe_token,
                     hash_password,
                     verify_password)
 
-from src.databases.main import get_db_session
-from src.databases.models import User
-from src.databases.redis import add_jti_to_blocklist
-from src.celery_tasks import send_email_task
-from src.config import Config
-from src.errors import UserAlreadyExists, UserNotFound, InvalidToken
-from src.utils.mail import (email_verification_message,
+from backend.src.databases.main import get_db_session
+from backend.src.databases.models import User
+from backend.src.databases.redis import add_jti_to_blocklist
+from backend.src.celery_tasks import send_email_task
+from backend.src.config import Config
+from backend.src.errors import UserAlreadyExists, UserNotFound, InvalidToken
+from backend.src.utils.mail import (email_verification_message,
                             password_message_template
                             )
 

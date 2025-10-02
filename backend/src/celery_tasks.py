@@ -1,7 +1,7 @@
 from asgiref.sync import async_to_sync
 from celery import Celery
 
-from src.utils.mail import create_message, FM
+from backend.src.utils.mail import create_message, FM
 
 
 celery_app = Celery(__name__)

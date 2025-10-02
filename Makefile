@@ -12,9 +12,9 @@ PYTHONPATH := .
 
 # Use the fastapi CLI as requested via bash -c. This requires `fastapi` to be
 # installed in your environment (pip install fastapi[all] provides the CLI).
-FASTAPI_CMD := bash -c 'fastapi dev src/'
+FASTAPI_CMD := bash -c 'fastapi dev backend/src/'
 
-CELERY_CMD := bash -c 'celery -A src.celery_tasks.celery_app worker --loglevel=info'
+CELERY_CMD := bash -c 'celery -A backend/src/celery_tasks.celery_app worker --loglevel=info'
 
 dev:
 	@echo "Starting fastapi dev server and celery worker (press Ctrl-C to stop)..."
