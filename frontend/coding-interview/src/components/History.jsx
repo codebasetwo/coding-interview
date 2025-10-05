@@ -1,7 +1,7 @@
 import "react"
 import {useState, useEffect} from "react"
 import {ChallengeQuestion} from "./ChallengeQuestionBody.jsx"
-import {callApi} from "../utils/api.js";
+import {callApi} from "../utils/API.js";
 
 export function HistoryPanel() {
     const {makeRequest} = callApi()

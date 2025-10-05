@@ -48,8 +48,7 @@ export function Body(){
 
 
     return (
-        <>
-            <div className='challenge-body'>
+            <div className='challenge-container'>
                 <h2>
                     Coding Challenge Generator
                 </h2>
@@ -59,9 +58,9 @@ export function Body(){
                         <p>Next reset: {getNextResetTime(quota)?.toLocaleString()}</p>
                     )}
                 </div>
-                <div>
-                    <label  htmlfor="difficulty">Select Difficulty:</label>
-                    <select name="" 
+                <div className='difficulty-selector'>
+                    <label  htmlfor="difficulty">Select Difficulty</label>
+                    <select
                         id="difficulty"
                         value={difficulty}
                         onChange={(e) => setDifficulty(e.target.value)}
@@ -88,7 +87,5 @@ export function Body(){
 
                 {challenge && <ChallengeQuestion challenge={challenge}/>}
             </div>
-        
-        </>
     )
 }

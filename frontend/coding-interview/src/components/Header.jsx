@@ -1,17 +1,25 @@
-import './Header.css'
-import ProfileImage from '../assets/female.png'
+import "./Header.css";
+import { Link } from "react-router";
+import ProfileImage from "../assets/female.png";
 
-export function Header(){
+export function Header() {
+  return (
+    <div className="app-layout">
+      <div className="app-header">
+        <div className="header-content">
+        <h1>Code Challenge Generator</h1>
 
-    return(
-    <div className='root'>
-        <h1>Coding challenge Generator</h1>
-        <nav className='nav-links'>
-            <a>Generate Challenge</a>
-            <a>History</a>
-            <img 
-            className="profile-image" src={ProfileImage} alt="profile-image"/>
+        <nav>
+          <Link to="/">Generate Challenge</Link>
+          <Link to="/history">History</Link>
+          <img
+            className="profile-image"
+            src={ProfileImage}
+            alt="profile-image"
+          />
         </nav>
+        </div>
       </div>
-    )
+    </div>
+  );
 }

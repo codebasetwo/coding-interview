@@ -59,3 +59,10 @@
   color: var(--text-color);
   line-height: 1.5;
 }
+
+.challenge-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 1rem 0;
+  color: var(--text-color);
+}

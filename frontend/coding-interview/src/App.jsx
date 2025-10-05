@@ -1,16 +1,17 @@
 // import { useState } from 'react'
-import { Header } from './components/Header'
-import { Body } from './components/Body'
+import {Routes, Route} from "react-router"
+import { HomePage } from "./components/HomePage"
+import { HistoryPanel } from "./components/History"
 import './App.css'
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <>
-      <Header/>
-      <Body />
-    </>
+    <Routes>
+      <Route index element={<HomePage/>}/>
+      <Route path="history" element={<HistoryPanel />}/>
+    </Routes>
   
   )
 }
