@@ -1,0 +1,29 @@
+.challenge-body {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+
+}
+
+.generate-button {
+    background-color: #2563eb;
+    border: none;
+    color: white;
+    padding: auto;
+    border-radius: .5em;
+    width: fit-content;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+
+.generate-button:hover {
+  background-color: #1d4ed8;
+}
+
+#difficulty {
+    margin: 10px;
+}
