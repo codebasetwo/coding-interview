@@ -48,6 +48,7 @@ export function Body(){
 
 
     return (
+        <main>
             <div className='challenge-container'>
                 <h2>
                     Coding Challenge Generator
@@ -87,5 +88,6 @@ export function Body(){
 
                 {challenge && <ChallengeQuestion challenge={challenge}/>}
             </div>
+            </main>
     )
 }

@@ -1,28 +1,22 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+
 .challenge-container {
   background-color: white;
-  margin: 0;
   padding: 2rem;
   border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  width: 100%;
-}
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 80%;
 
-
-.generate-button {
-    background-color: #2563eb;
-    border: none;
-    color: white;
-    padding: auto;
-    border-radius: .5em;
-    width: fit-content;
-    height: 40px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-
-.generate-button:hover {
-  background-color: #1d4ed8;
 }
 
 
@@ -85,6 +79,7 @@
   cursor: pointer;
   transition: background-color 0.2s;
 }
+
 
 .generate-button:hover {
   background-color: #1d4ed8;
