@@ -25,7 +25,7 @@ export function Profile() {
         </div>
         <div>
           <img src={LogoutImage} alt="logout" className="profile-image-icon" />
-          <p>Sign out</p>
+          <p><a href="/login">Sign out</a></p>
         </div>
       </div>
       <div className="footer">
