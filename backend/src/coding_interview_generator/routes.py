@@ -1,30 +1,31 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.requests import Request
 from sqlmodel.ext.asyncio.session import AsyncSession
 
 from .schemas import ChallengeRequest
 from .service import ChallengeService
 from .utils import generate_challenge_with_ai
-from ..utils import authenticate_and_get_user_details
 from backend.src.databases.main import get_db_session
+from backend.src.auth.dependencies import AccessTokenBearer
+from backend.src.auth.service import UserService
+from backend.src.databases.models import User
 import json
 from datetime import datetime
 
 
-router = APIRouter()
+challenge_router = APIRouter()
 challenge_service = ChallengeService()
 
 
-
-@router.post("/generate-challenge")
+@challenge_router.post("/generate-challenge")
 async def generate_challenge(
     request: ChallengeRequest, 
-    request_obj: Request, 
+    token_data: dict = Depends(AccessTokenBearer()),
     db: AsyncSession = Depends(get_db_session)
     ):
     try:
-        user_details = authenticate_and_get_user_details(request_obj)
-        user_id = user_details.get("user_id")
+        user: User = UserService().get_user_by_email(token_data['emaiil'], session=db)
+        user_id = user.model_dump()['uid']
+        
 
         quota = challenge_service.get_challenge_quota(db, user_id)
         if not quota:
@@ -64,20 +65,25 @@ async def generate_challenge(
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@router.get("/my-history")
-async def my_history(request: Request, db: AsyncSession = Depends(get_db_session)):
-    user_details = authenticate_and_get_user_details(request)
-    user_id = user_details.get("user_id")
+@challenge_router.get("/my-history")
+async def my_history(
+    token_data: dict = Depends(AccessTokenBearer), 
+    db: AsyncSession = Depends(get_db_session)
+    ):
+    user: User = UserService().get_user_by_email(token_data['email'], session=db)
+    user_id = user.model_dump()['uid']
 
     challenges = challenge_service.get_user_challenges(db, user_id)
     return {"challenges": challenges}
 
 
-@router.get("/quota")
-async def get_quota(request: Request, db: AsyncSession = Depends(get_db_session)):
-    user_details = authenticate_and_get_user_details(request)
-    user_id = user_details.get("user_id")
-
+@challenge_router.get("/quota")
+async def get_quota(token_data: dict = Depends(AccessTokenBearer),
+                     db: AsyncSession = Depends(get_db_session)
+                     ):
+    
+    user: User = UserService().get_user_by_email(token_data['emaiil'], session=db)
+    user_id = user.model_dump()['uid']
     quota = challenge_service.get_challenge_quota(db, user_id)
     if not quota:
         return {

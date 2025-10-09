@@ -27,7 +27,7 @@ def verify_password(password: str, hashed_password: str) -> bool:
     return password_context.verify(password, hashed_password)
 
 
-def create_access_token(user_data: dict):
+def create_access_token(user_data: dict) -> str:
     now = datetime.now(tz=timezone.utc)
     pay_load = {
         "user": user_data["email"],
@@ -44,7 +44,7 @@ def create_access_token(user_data: dict):
         algorithm=Config.JWT_ALGORITHM
         )
 
-def create_refresh_token(user_data: dict):
+def create_refresh_token(user_data: dict) -> str:
     now = datetime.now(tz=timezone.utc)
     pay_load = {
         'user': user_data['email'],

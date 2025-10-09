@@ -2,10 +2,11 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from src.auth.routes import auth_router
-from src.databases.main import init_db
+from backend.src.auth.routes import auth_router
+from backend.src.coding_interview_generator.routes import challenge_router
+from backend.src.databases.main import init_db
 from config import Config
-from src.errors import register_errors
+from backend.src.errors import register_errors
 
 
 description = "An application to help developers practice for technical interviews in python."
@@ -46,3 +47,4 @@ async def home(name: str = "Nnaemeka"):
         }
 
 app.include_router(auth_router, prefix=f"{Config.API_PREFIX}/auth", tags=["auth"])
+app.include_router(challenge_router, prefix=f"{Config.API_PREFIX}/challenges", tags=["challenges"])

@@ -14,12 +14,15 @@ PYTHONPATH := .
 # installed in your environment (pip install fastapi[all] provides the CLI).
 FASTAPI_CMD := bash -c 'fastapi dev backend/src/'
 
-CELERY_CMD := bash -c 'celery -A backend/src/celery_tasks.celery_app worker --loglevel=info'
+CELERY_CMD := bash -c 'celery -A backend.src.celery_tasks.celery_app worker --loglevel=info'
+
+NODE_FRONTEND_COMMAND := bash -c 'npm --prefix frontend/coding-interview run dev'
 
 dev:
 	@echo "Starting fastapi dev server and celery worker (press Ctrl-C to stop)..."
 	PYTHONPATH=$(PYTHONPATH) $(FASTAPI_CMD) & \
 	PYTHONPATH=$(PYTHONPATH) $(CELERY_CMD) & \
+	PYTHONPATH=$(PYTHONPATH) $(NODE_FRONTEND_COMMAND) & \
 	wait
 
 run-server:
