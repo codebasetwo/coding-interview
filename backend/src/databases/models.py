@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from datetime import datetime
 from uuid import uuid4, UUID
 from typing import List, Optional
@@ -14,7 +12,7 @@ from sqlmodel import SQLModel, Field, Column, Relationship
 class User(SQLModel, table=True):
     __tablename__ = 'users'
 
-    uid: UUID = Field(sa_column=Column(pg.UUID(as_uuid=True), default=uuid4, unique=True, primary_key=True, nullable=False, index=True))
+    uid: UUID = Field(sa_column=Column(pg.UUID(as_uuid=True), default=uuid4, unique=True, primary_key=True, index=True))
     first_name: str = Field(nullable=False)
     last_name: str = Field(nullable=False)
     middle_name: str | None = Field(default=None)
@@ -36,7 +34,7 @@ class Challenge(SQLModel, table=True):
     id: int = Field(primary_key=True)
     difficulty: str = Field(nullable=False)
     date_created: datetime = Field(default=datetime.now)
-    created_by: UUID = Field(sa_column=Column(pg.UUID(as_uuid=True), ForeignKey("users.uid")), nullable=False)
+    created_by: UUID = Field(sa_column=Column(pg.UUID(as_uuid=True), ForeignKey("users.uid")),)
     title: str = Field(nullable=False)
     options: str = Field(nullable=False)
     correct_answer_id: str = Field(nullable=False)
@@ -50,7 +48,7 @@ class ChallengeQuota(SQLModel, table=True):
     __tablename__ = 'challenge_quotas'
 
     id: int = Field(primary_key=True)
-    user_id: UUID = Field(sa_column=Column(pg.UUID(as_uuid=True), ForeignKey("users.uid")), nullable=False, unique=True)
+    user_id: UUID = Field(sa_column=Column(pg.UUID(as_uuid=True), ForeignKey("users.uid"), unique=True,) )
     quota_remaining: int = Field(nullable=False, default=5)
     last_reset_date: datetime = Field(default=datetime.now)
 

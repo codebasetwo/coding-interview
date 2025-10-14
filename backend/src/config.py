@@ -81,5 +81,5 @@ logging_config = {
 }
 
 
-logging.config.dictConfig(logging_config)
-logger = logging.getLogger(__name__)
+# logging.config.dictConfig(logging_config)
+# logger = logging.getLogger(__name__)

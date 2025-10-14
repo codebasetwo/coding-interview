@@ -33,6 +33,10 @@ run-celery:
 	@echo "Starting celery worker (foreground)..."
 	PYTHONPATH=$(PYTHONPATH) $(CELERY_CMD)
 
+run-frontend:
+	@echo "starting frontend server"\
+	PYTHONPATH=$(PYTHONPATH) $(NODE_FRONTEND_COMMAND)
+
 # Start celery in background, store pid and log output to logs/celery.log
 run-celery-bg:
 	@mkdir -p logs
