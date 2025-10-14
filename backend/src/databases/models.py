@@ -33,11 +33,11 @@ class Challenge(SQLModel, table=True):
 
     id: int = Field(primary_key=True)
     difficulty: str = Field(nullable=False)
-    date_created: datetime = Field(default=datetime.now)
+    date_created: datetime = Field(default_factory=datetime.now)
     created_by: UUID = Field(sa_column=Column(pg.UUID(as_uuid=True), ForeignKey("users.uid")),)
     title: str = Field(nullable=False)
     options: str = Field(nullable=False)
-    correct_answer_id: str = Field(nullable=False)
+    correct_answer_id: int = Field(nullable=False)
     explanation: str = Field(nullable=False)
 
     # Relationship to the user who created the challenge
@@ -50,7 +50,7 @@ class ChallengeQuota(SQLModel, table=True):
     id: int = Field(primary_key=True)
     user_id: UUID = Field(sa_column=Column(pg.UUID(as_uuid=True), ForeignKey("users.uid"), unique=True,) )
     quota_remaining: int = Field(nullable=False, default=5)
-    last_reset_date: datetime = Field(default=datetime.now)
+    last_reset_date: datetime = Field(default_factory=datetime.now)
 
     # Relationship back to user (one-to-one)
     user: Optional[User] = Relationship(back_populates="quota")

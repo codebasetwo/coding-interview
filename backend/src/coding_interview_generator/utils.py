@@ -15,24 +15,17 @@ client = OpenAI(api_key=api_key)
 
 def generate_challenge_with_ai(difficulty: str) -> Dict[str, Any]:
     try:
-        response = client.chat.completions.create(
+        response = client.chat.completions.parse(
             model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": f"Generate a {difficulty} difficulty coding challenge."}
             ],
-            text_format=QuestionAnswerModel,
+            response_format=QuestionAnswerModel,
             temperature=0.7
         )
-
-        challenge_data  = response.output_parsed
-
-        required_fields = ("question", "options", "correct_answer_id", "explanation")
-        for field in required_fields:
-            if field not in challenge_data:
-                raise ValueError(f"Missing required field: {field}")
-
-        return challenge_data
+        print(type(json.loads(response.choices[0].message.content)))
+        return json.loads(response.choices[0].message.content) #challenge_data
 
     except Exception as e:
         print(e)

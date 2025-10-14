@@ -209,7 +209,9 @@ async def get_new_access_token(token_details: dict = Depends(RefreshTokenBearer(
     expiry_timestamp = token_details["exp"]
 
     if datetime.fromtimestamp(expiry_timestamp) > datetime.now():
-        new_access_token = create_access_token(user_data=token_details["user"])
+        email = token_details.get('user')
+        uid = token_details.get('sub')
+        new_access_token = create_access_token(user_data={'email': email, 'user_uid': uid})
 
         return JSONResponse(content={"access_token": new_access_token})
 
