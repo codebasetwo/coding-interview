@@ -18,8 +18,7 @@ class SignupRequest(BaseModel):
     
 
 class SigninRequest(BaseModel):
-    user_name: str | None = None
-    email: str | None = None
+    email: str
     password: str
 
 

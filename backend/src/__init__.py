@@ -1,6 +1,7 @@
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from backend.src.auth.routes import auth_router
 from backend.src.coding_interview_generator.routes import challenge_router
@@ -38,6 +39,13 @@ app = FastAPI(
 
 register_errors(app)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+    allow_credentials=True,
+    )
 # create a home for testing
 @app.get("/")
 async def home(name: str = "Nnaemeka"):

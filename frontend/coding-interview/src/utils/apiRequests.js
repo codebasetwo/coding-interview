@@ -4,7 +4,7 @@ function getToken() {
 
 export const callApi = () => {
     const makeRequest = async (endpoint, options = {}) => {
-        const token = await getToken()
+        const token = getToken()
         const defaultOptions = {
             headers: {
                 "Content-Type": "application/json",
@@ -29,4 +29,18 @@ export const callApi = () => {
     }
 
     return {makeRequest}
+}
+
+
+// Example login function
+export async function login(email, password, ) {
+  const response = await fetch('http://localhost:8000/api/v1/auth/signin', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({email, password}),
+  });
+  if (!response.ok) throw new Error('Login failed');
+  const data = await response.json();
+  localStorage.setItem('access_token', data.access_token); // Save access token
+  localStorage.setItem('refresh_token', data.refresh_token); // Save access token
 }
