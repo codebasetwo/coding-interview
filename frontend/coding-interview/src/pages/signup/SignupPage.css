@@ -4,12 +4,13 @@
     align-items: center;
     flex-direction: column;
     background-color: white;
-    width: 500px;
+    width: 600px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     position: relative;
     top: 100px;
     left: 30%;
+    height:min-content;
 }
 
 .main-container h3 {
@@ -21,7 +22,7 @@ p {
     color: gray;
 }
 
-.signin-label {
+.signup-label {
     width: 80%;
 }
 
@@ -32,7 +33,8 @@ p {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-.login-button {
+
+.signup-button {
     margin-top: 10px;
     margin-bottom: 10px;
     width: 80%;
@@ -46,16 +48,16 @@ p {
     transition: background-color 0.2s
 }
 
-.signout-footer a {
+.signin-footer a {
     color: gray;
     text-decoration: none;
 }
 
-.login-button:hover {
+.signup-button:hover {
     background-color: #1d4ed8;
 }
 
-.signout-footer {
+.signin-footer {
     background-color: rgba(255, 237, 179, 0.185);
     display: flex;
     justify-content: center;
@@ -64,11 +66,16 @@ p {
     width: 100%;
 }
 
-.signout-company {
+.signin-company {
     margin-bottom: 0;
     margin: 0;
 }
-.signout-dev-mode {
+
+.signin-dev-mode {
     color: orange;
     margin-top: 4px;
+}
+
+.signup-form {
+    margin: 20px;
 }

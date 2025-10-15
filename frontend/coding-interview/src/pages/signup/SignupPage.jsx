@@ -87,9 +87,9 @@ export function SignupPage() {
             onChange={onChange}
           />
           <input
-            type="password"
+            type='password'
             placeholder="Password"
-            id="passwordInput"
+            id="PasswordInput"
             name="password"
             value={form.password}
             onChange={onChange}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { getRequest, postRequest } from "../utils/apiRequests";
-import { ChallengeQuestions } from "./ChallengeQuestions.jsx";
-import { getNextResetTime } from "../utils/resetTime.js";
+import { getRequest, postRequest } from "../../utils/apiRequests";
+import { ChallengeQuestions } from "../../components/ChallengeQuestions.jsx";
+import { getNextResetTime } from "../../utils/resetTime.js";
 import "./Body.css";
 
 export function Body() {

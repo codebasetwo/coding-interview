@@ -1,6 +1,6 @@
 import './LoginPage.css'
 import {useState} from 'react'
-import { login } from '../utils/apiRequests'
+import { login } from '../../utils/apiRequests'
 import { useNavigate } from 'react-router'
 
 export function LoginPage() {

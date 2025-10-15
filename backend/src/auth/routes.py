@@ -29,11 +29,12 @@ from backend.src.errors import UserAlreadyExists, UserNotFound, InvalidToken
 from backend.src.utils.mail import (email_verification_message,
                             password_message_template
                             )
-
+from backend.src.coding_interview_generator.service import ChallengeService
 
 auth_router = APIRouter()
 
 user_service = UserService()
+challenge_service = ChallengeService()
 
 @auth_router.post("/signup")
 async def create_account(request: SignupRequest, 
@@ -80,6 +81,7 @@ async def verify_user_account(token: str,
             raise UserNotFound()
 
         user = await user_service.update_user(user, {"is_verified": True}, session)
+        _ = await challenge_service.create_challenge_quota(session=session, user_id=user.uid)
 
         return JSONResponse(
             content={

@@ -23,7 +23,6 @@ async def generate_challenge(
     try:
         user_id = token_data['sub']
         
-
         quota = await challenge_service.get_challenge_quota(db, user_id)
         if not quota:
             quota = await challenge_service.create_challenge_quota(db, user_id)

@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react"
-import {ChallengeQuestions} from "./ChallengeQuestions.jsx"
-import { getRequest } from "../utils/apiRequests.js"
+import {ChallengeQuestions} from "../../components/ChallengeQuestions"
+import { getRequest } from "../../utils/apiRequests.js"
 
 export function HistoryPanel() {
     const [history, setHistory] = useState([])

@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router"
-import { LoginPage } from "./components/LoginPage"
-import { HomePage } from "./components/HomePage"
-import { SignupPage } from "./components/SignupPage"
-import { HistoryPanel } from "./components/History"
+import { LoginPage } from "./pages/login/LoginPage"
+import { HomePage } from "./pages/home/HomePage"
+import { SignupPage } from "./pages/signup/SignupPage"
+import { HistoryPanel } from "./pages/history/History"
 import './App.css'
 
 function App() {
