@@ -1,6 +1,7 @@
 import './Header.css'
 import ProfileImage from '../assets/female.png'
 import { useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router'
 import { Profile } from './Profile'
 
 export function Header() {
@@ -31,7 +32,7 @@ export function Header() {
       <h1 className='h2'>Code Challenge Generator</h1>
       <nav>
         <a href="">Generate Challenge</a>
-        <a href="">History</a>
+        <Link to="/history">History</Link>
         <div className='profile-section' ref={dropdownRef}>
           <img 
             src={ProfileImage} 
