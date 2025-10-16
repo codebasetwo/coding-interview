@@ -61,16 +61,15 @@ The repo doesn't include a production-ready deploy script, but the recommended a
 
 ```bash
 cd frontend/coding-interview
-npm ci
-npm run build
+
 # serve the `dist` directory with your preferred static web server (nginx, Caddy, etc.)
 ```
 
-2. Run the backend with a production ASGI server (Uvicorn/Gunicorn):
+2. Run the backend with a fastapi production or dev(if you want to add changes.):
 
 ```bash
 # Example using uvicorn directly
-PYTHONPATH=. uvicorn backend.src.__init__:app --host 0.0.0.0 --port 8000 --workers 4
+PYTHONPATH=. fastapi dev backend/src/
 ```
 
 3. Start Celery workers in the production environment (ensure Redis URL is configured):
@@ -116,18 +115,16 @@ source .venv/bin/activate
 2. Install backend dependencies. This project uses `pyproject.toml` (Hatch). If you prefer pip, you can create a `requirements.txt` or use pip to install directly from the project; otherwise install with pip from the project env:
 
 ```bash
-# Example using pip (if you have a requirements file)
-pip install -r backend/requirements.txt
+# Example using uv (using pyproject.toml file)
+uv sync
 
-# Or install the backend package in editable mode if you have an editable setup
-# pip install -e .
 ```
 
 3. Install frontend dependencies:
 
 ```bash
 cd frontend/coding-interview
-npm ci
+npm install
 ```
 
 4. Start development servers with `make dev` (recommended) or the individual `make` targets above.
